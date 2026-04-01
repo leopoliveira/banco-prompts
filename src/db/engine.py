@@ -1,14 +1,16 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from contextlib import contextmanager
 
 from django.conf import settings
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 engine = create_engine(settings.DATABASE_URL, echo=settings.DEBUG)
 
 SessionLocal = sessionmaker(bind=engine)
 
 
-def get_session():
+@contextmanager
+def get_db():
     session = SessionLocal()
     try:
         yield session

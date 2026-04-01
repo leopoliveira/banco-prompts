@@ -63,3 +63,6 @@ pgdata/
 *~
 .DS_Store
 Thumbs.db
+
+# Claude Folder
+.claude/
