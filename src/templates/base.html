@@ -13,10 +13,18 @@
             <a href="{% url 'prompts:index' %}" class="text-xl font-bold text-gray-900">
                 Banco de Prompts
             </a>
-            <a href="{% url 'prompts:submit' %}"
-               class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors">
-                Enviar Prompt
-            </a>
+            <div class="flex items-center gap-3">
+                {% if user.is_staff %}
+                <a href="{% url 'admin:index' %}"
+                   class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                    Admin
+                </a>
+                {% endif %}
+                <a href="{% url 'prompts:submit' %}"
+                   class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors">
+                    Enviar Prompt
+                </a>
+            </div>
         </div>
     </nav>
 
