@@ -5,6 +5,26 @@ from apps.prompts import admin_views
 
 urlpatterns = [
     path(
+        "admin/painel/",
+        admin_views.dashboard,
+        name="admin_dashboard",
+    ),
+    path(
+        "admin/prompts/",
+        admin_views.prompt_list,
+        name="admin_prompt_list",
+    ),
+    path(
+        "admin/prompts/<int:pk>/aprovar/",
+        admin_views.prompt_approve,
+        name="admin_prompt_approve",
+    ),
+    path(
+        "admin/prompts/<int:pk>/rejeitar/",
+        admin_views.prompt_reject,
+        name="admin_prompt_reject",
+    ),
+    path(
         "admin/categorias/",
         admin_views.category_list,
         name="admin_category_list",
