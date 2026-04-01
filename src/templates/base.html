@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,14 +9,7 @@
     <script>
     tailwind.config = { darkMode: 'class' };
     </script>
-    <script>
-    (function() {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.documentElement.classList.add("dark");
-        }
-    })();
-    </script>
+    <script src="{% static 'js/theme-init.js' %}"></script>
     {% block extra_head %}{% endblock %}
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 transition-colors">
@@ -71,35 +65,7 @@
         </svg>
     </button>
 
-    <script>
-    document.querySelectorAll(".alert").forEach(el => {
-        setTimeout(() => {
-            el.style.opacity = "0";
-            setTimeout(() => el.remove(), 300);
-        }, 5000);
-    });
-
-    (function() {
-        const toggle = document.getElementById("theme-toggle");
-        const iconSun = document.getElementById("icon-sun");
-        const iconMoon = document.getElementById("icon-moon");
-
-        function updateIcon() {
-            const isDark = document.documentElement.classList.contains("dark");
-            iconSun.classList.toggle("hidden", !isDark);
-            iconMoon.classList.toggle("hidden", isDark);
-        }
-
-        toggle.addEventListener("click", () => {
-            document.documentElement.classList.toggle("dark");
-            const isDark = document.documentElement.classList.contains("dark");
-            localStorage.setItem("theme", isDark ? "dark" : "light");
-            updateIcon();
-        });
-
-        updateIcon();
-    })();
-    </script>
+    <script src="{% static 'js/base.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
