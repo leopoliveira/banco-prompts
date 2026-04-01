@@ -1,0 +1,27 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div style="margin-bottom: 30px; padding: 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;">
+    <h2 style="margin: 0 0 16px 0; font-size: 18px;">Banco de Prompts</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a href="{% url 'admin_dashboard' %}"
+           style="padding: 8px 16px; background: #417690; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;">
+            Painel
+        </a>
+        <a href="{% url 'admin_prompt_list' %}?status=pending"
+           style="padding: 8px 16px; background: #f59e0b; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;">
+            Prompts Pendentes
+        </a>
+        <a href="{% url 'admin_category_list' %}"
+           style="padding: 8px 16px; background: #3b82f6; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;">
+            Categorias
+        </a>
+        <a href="{% url 'admin_provider_list' %}"
+           style="padding: 8px 16px; background: #8b5cf6; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;">
+            Provedores LLM
+        </a>
+    </div>
+</div>
+
+{{ block.super }}
+{% endblock %}

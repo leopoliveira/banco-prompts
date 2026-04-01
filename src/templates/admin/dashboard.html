@@ -1,0 +1,35 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}Painel de Administracao{% endblock %}
+
+{% block content %}
+<div style="margin: 20px 0;">
+    <h2>Painel de Administracao</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin-top: 20px;">
+        <a href="{% url 'admin_prompt_list' %}?status=pending"
+           style="display: block; padding: 20px; background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; text-decoration: none; color: #92400e;">
+            <div style="font-size: 32px; font-weight: bold;">{{ pending_count }}</div>
+            <div style="font-size: 14px; margin-top: 4px;">Prompts pendentes de aprovacao</div>
+        </a>
+
+        <a href="{% url 'admin_prompt_list' %}?status=approved"
+           style="display: block; padding: 20px; background: #d1fae5; border: 1px solid #10b981; border-radius: 8px; text-decoration: none; color: #065f46;">
+            <div style="font-size: 16px; font-weight: bold;">Prompts Aprovados</div>
+            <div style="font-size: 14px; margin-top: 4px;">Ver todos os prompts publicados</div>
+        </a>
+
+        <a href="{% url 'admin_category_list' %}"
+           style="display: block; padding: 20px; background: #dbeafe; border: 1px solid #3b82f6; border-radius: 8px; text-decoration: none; color: #1e40af;">
+            <div style="font-size: 16px; font-weight: bold;">Categorias</div>
+            <div style="font-size: 14px; margin-top: 4px;">Gerenciar categorias de prompts</div>
+        </a>
+
+        <a href="{% url 'admin_provider_list' %}"
+           style="display: block; padding: 20px; background: #ede9fe; border: 1px solid #8b5cf6; border-radius: 8px; text-decoration: none; color: #5b21b6;">
+            <div style="font-size: 16px; font-weight: bold;">Provedores LLM</div>
+            <div style="font-size: 14px; margin-top: 4px;">Gerenciar provedores de IA</div>
+        </a>
+    </div>
+</div>
+{% endblock %}
