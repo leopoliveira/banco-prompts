@@ -112,10 +112,17 @@
             </button>
         </div>
         <!-- Modal Badges -->
-        <div id="modal-badges" class="px-6 pt-4 flex flex-wrap gap-2"></div>
+        <div class="px-6 pt-4 space-y-2">
+            <div id="modal-categories" class="hidden flex-wrap items-center gap-1">
+                <span class="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Tags:</span>
+            </div>
+            <div id="modal-providers" class="hidden flex-wrap items-center gap-1">
+                <span class="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">Testado em:</span>
+            </div>
+        </div>
         <!-- Modal Content -->
         <div class="flex-1 overflow-y-auto p-6">
-            <pre id="modal-content" class="whitespace-pre-wrap text-gray-800 dark:text-gray-200 font-sans leading-relaxed"></pre>
+            <pre id="modal-content" class="whitespace-pre-wrap break-words text-gray-800 dark:text-gray-200 font-sans leading-relaxed"></pre>
         </div>
         <!-- Modal Footer -->
         <div class="p-6 border-t border-gray-200 dark:border-gray-700 flex justify-end">

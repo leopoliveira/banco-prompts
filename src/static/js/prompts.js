@@ -221,24 +221,43 @@
 
         document.getElementById("modal-title").textContent = data.title;
         document.getElementById("modal-author").textContent = "Por: " + data.author;
-        document.getElementById("modal-date").textContent = "Atualizado: " + data.updated_at;
+        document.getElementById("modal-date").textContent = "Atualizado em: " + data.updated_at;
         document.getElementById("modal-content").textContent = data.content;
 
-        var badges = document.getElementById("modal-badges");
-        badges.replaceChildren();
-        data.categories.forEach(function (c) {
-          badges.appendChild(
-            createBadge(c.name, "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200")
-          );
-        });
-        data.providers.forEach(function (pr) {
-          badges.appendChild(
-            createBadge(
-              pr.name,
-              "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-            )
-          );
-        });
+        var modalCats = document.getElementById("modal-categories");
+        var modalProvs = document.getElementById("modal-providers");
+        // Keep the label span, remove old badges
+        while (modalCats.children.length > 1) modalCats.removeChild(modalCats.lastChild);
+        while (modalProvs.children.length > 1) modalProvs.removeChild(modalProvs.lastChild);
+
+        if (data.categories.length) {
+          modalCats.classList.remove("hidden");
+          modalCats.classList.add("flex");
+          data.categories.forEach(function (c) {
+            modalCats.appendChild(
+              createBadge(c.name, "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200")
+            );
+          });
+        } else {
+          modalCats.classList.add("hidden");
+          modalCats.classList.remove("flex");
+        }
+
+        if (data.providers.length) {
+          modalProvs.classList.remove("hidden");
+          modalProvs.classList.add("flex");
+          data.providers.forEach(function (pr) {
+            modalProvs.appendChild(
+              createBadge(
+                pr.name,
+                "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+              )
+            );
+          });
+        } else {
+          modalProvs.classList.add("hidden");
+          modalProvs.classList.remove("flex");
+        }
 
         modal.classList.remove("hidden");
         document.body.style.overflow = "hidden";
